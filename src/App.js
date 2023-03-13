@@ -4,6 +4,7 @@ import "./App.css";
 import { CssBaseline } from "@mui/material";
 import { Container } from "@mui/system";
 import Navbar from "./Components/Shared/Navbar/Navbar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <RouterProvider router={router}> </RouterProvider>
 
       <CssBaseline />
+      <Toaster/>
     </Container>
   );
 }

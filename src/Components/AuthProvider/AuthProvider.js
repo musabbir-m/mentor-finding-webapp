@@ -24,6 +24,11 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  //update user
+  const updateUser= (userInfo)=> {
+    return updateProfile(auth.currentUser, userInfo )
+ }
+
   //Login user with email password
   const login = (email, password) => {
     setLoading(true);
@@ -61,7 +66,8 @@ const AuthProvider = ({ children }) => {
     createUser,
     login,
     logOut,
-    googleLogin
+    googleLogin,
+    updateUser
   };
 
   return (
