@@ -4,14 +4,17 @@ import React from "react";
 import Navbar from "../Shared/Navbar/Navbar";
 import SignUp from "../SignUp/SignUp";
 import Branding from "./Branding/Branding";
-import HowItWorks from "./HowItWorks/HowItWorks";
+import HowToFind from "./HowToFind/HowToFind";
+import HowWorksBanner from "./HowWorksBanner/HowWorksBanner";
 
 const Home = () => {
   return (
     <Container>
       <Branding></Branding>
-      <HowItWorks></HowItWorks>
+      <HowToFind></HowToFind>
+       <HowWorksBanner></HowWorksBanner>
       <CssBaseline></CssBaseline>
+
     </Container>
   );
 };

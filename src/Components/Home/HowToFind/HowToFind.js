@@ -29,7 +29,7 @@ const WorkBox = styled(Box)(({ theme }) => ({
   //   },
 }));
 
-const HowItWorks = () => {
+const HowToFind = () => {
   return (
     <WorkBox>
       <Typography
@@ -109,4 +109,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowToFind;
