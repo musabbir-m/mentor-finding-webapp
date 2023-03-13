@@ -33,7 +33,16 @@ const Branding = () => {
           Become a mentor
         </Button>
       </Box>
-      <Box>
+      <Box 
+      sx={{
+        width: '50%',
+        display: {
+            xs: 'none',
+            sm: 'none',
+            md: 'block'
+        }
+      }}
+      >
         <img
           src="https://i.ibb.co/jWcJdMw/Webinar-bro.png"
           style={{ width: "100%", height: "100%" }}

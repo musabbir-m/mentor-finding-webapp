@@ -51,11 +51,11 @@ export default function Navbar(props) {
   return (
   
    
-    <Box sx={{ display: "flex",  }}>
+    <Box  sx={{ display: "flex",  }}>
       <CssBaseline />
       
       <AppBar  component="nav" sx={{backgroundColor: "black", boxShadow:'none'}}>
-        <Container>
+        <Container >
         <Toolbar>
           <IconButton
             color=""
