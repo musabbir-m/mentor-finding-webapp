@@ -9,7 +9,7 @@ const useMentor = (email) => {
         fetch(`http://localhost:5000/user/mentor/${email}`)
           .then((res) => res.json())
           .then((data) => {
-            setMentor(data.isAdmin);
+            setMentor(data.isMentor);
             setMentorLoading(false);
           });
       }
