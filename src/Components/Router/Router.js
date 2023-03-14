@@ -1,4 +1,5 @@
 import Main from "../../Layouts/Main";
+import BecomeMentor from "../BecomeMentor/BecomeMentor";
 import Home from "../Home/Home";
 import SignUp from "../SignUp/SignUp";
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path:'/signup',
         element: <SignUp></SignUp>
+      },
+      {
+        path: '/becomementor',
+        element: <BecomeMentor></BecomeMentor>
       }
     ],
   },

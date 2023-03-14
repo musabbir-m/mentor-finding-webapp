@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -56,6 +57,7 @@ export default function Navbar(props) {
       
       <AppBar  component="nav" sx={{backgroundColor: "black", boxShadow:'none'}}>
         <Container >
+          
         <Toolbar>
           <IconButton
             color=""
@@ -80,7 +82,9 @@ export default function Navbar(props) {
                 {item}
               </Button>
             ))}
+            
           </Box>
+        <Typography> </Typography>
         </Toolbar>
         </Container>
       </AppBar>
