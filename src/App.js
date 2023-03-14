@@ -10,7 +10,7 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <Container disableGutters maxWidth="">
-      <Navbar></Navbar>
+      
       <RouterProvider router={router}> </RouterProvider>
 
       <CssBaseline />

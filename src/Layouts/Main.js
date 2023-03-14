@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <Container disableGutters maxWidth="">
       <CssBaseline></CssBaseline>
-     
+     <Navbar></Navbar>
       <Outlet></Outlet>
     </Container>
   );

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Button, Stack, Typography } from "@mui/material";
 import { Box, height } from "@mui/system";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BrandingBox = styled(Box)(({ theme }) => ({
   height: "80vh",
@@ -30,7 +31,7 @@ const Branding = () => {
         </Button>
         <Button variant="outlined" color="secondary" sx={{ ml: 1 }}>
           {" "}
-          Become a mentor
+          <Link to='/becomementor'>Be a mentor</Link>
         </Button>
       </Box>
       <Box 
