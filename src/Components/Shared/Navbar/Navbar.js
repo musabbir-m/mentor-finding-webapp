@@ -126,9 +126,9 @@ export default function Navbar(props) {
                   }}
                 >
                   <MenuItem onClick={handleClose}><Link to='/category/webdevelopment'>Web Development</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='category/uxdesign'>UX and Design</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='category/product&marketing'>Product and Marketing</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='category/programming'>Programming</Link></MenuItem>
+                  <MenuItem onClick={handleClose}><Link to='/category/uxdesign'>UX and Design</Link></MenuItem>
+                  <MenuItem onClick={handleClose}><Link to='/category/product&marketing'>Product and Marketing</Link></MenuItem>
+                  <MenuItem onClick={handleClose}><Link to='/category/programming'>Programming</Link></MenuItem>
                 </Menu>
               </div>
 
