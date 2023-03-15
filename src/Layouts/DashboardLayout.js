@@ -23,7 +23,7 @@ const DashboardLayout = () => {
        <div className="bg-gray-200 py-2"> <RocketLaunchIcon></RocketLaunchIcon><p className="md:inline hidden font-semibold">Dashboard</p></div>
           {isMentee && (
             <>
-              <Link to="/myrequest">My Requests</Link>
+              <Link to="/dashboard/myrequest">My Requests</Link>
             </>
           )}
           {isAdmin && (

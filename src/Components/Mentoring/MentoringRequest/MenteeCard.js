@@ -4,7 +4,7 @@ import { Avatar, Box, Card, CardContent, CardMedia, Typography } from "@mui/mate
 
 const MenteeCard = ({ mentee }) => {
   //get mentee details
-  const url = `http://localhost:5000/mentee/${mentee.menteeEmail}`;
+  const url = `http://localhost:5000/user/${mentee.menteeEmail}`;
   const {
     data: oneMentee = [],
     isLoading,

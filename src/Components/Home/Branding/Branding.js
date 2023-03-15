@@ -26,10 +26,10 @@ const Branding = () => {
         <Typography sx={{mb:2}}>
           Lorem ipsum dolor, sit amet consectetur <br /> adipisicing elit. Magni, est.
         </Typography>
-        <Button variant="contained" sx={{ bgcolor: "purple" }}>
+        <Button variant="contained" className="bg-blue-500">
           Find mentor
         </Button>
-        <Button variant="outlined" color="secondary" sx={{ ml: 1 }}>
+        <Button variant="outlined"  sx={{ ml: 1 }}>
           {" "}
           <Link to='/becomementor'>Be a mentor</Link>
         </Button>

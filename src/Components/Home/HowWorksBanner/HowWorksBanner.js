@@ -44,7 +44,7 @@ const HowWorksBanner = () => {
               <br /> online or in-person
             </Typography>
           </Box>
-          <Button variant="contained" color='secondary' sx={{mx:'2rem', mt:'2rem'}}>See More</Button>
+          <Button variant="contained" className="bg-blue-500" sx={{mx:'2rem', mt:'2rem'}}>See More</Button>
         </Box>
       </HowWorksBox>
     </Box>

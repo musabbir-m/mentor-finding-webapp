@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import CategoryCard from './CategoryCard/CategoryCard';
 
 const UxDesign = () => {
-    const url= "http://localhost:5000//uxdesign"
+    const url= "http://localhost:5000/uxdesign"
     const {
         data: uxMentors = [],
         isLoading,
@@ -19,7 +19,7 @@ const UxDesign = () => {
     return (
         <div>
              <h2 className='text-5xl font-bold text-center mt-24 mb-16'>Top mentors for UX and Design</h2>
-            {uxMentors.map(mentor=> 
+            {uxMentors?.map(mentor=> 
             <CategoryCard
             key={mentor._id}
             data= {mentor}

@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { CatchingPokemon } from "@mui/icons-material";
 import { Menu, MenuItem, Stack } from "@mui/material";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -35,6 +36,17 @@ export default function Navbar(props) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  
+  // dropdown2
+
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
   };
 
   //
@@ -96,8 +108,8 @@ export default function Navbar(props) {
               color="black"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-             Findmentor
-            </Typography>
+             <Link to='/'>Findmentor</Link>
+            </Typography> 
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {/* {navItems.map((item) => (
                 <Button key={item} sx={{ color: "white" }}>
@@ -134,23 +146,59 @@ export default function Navbar(props) {
 
               {/* Dropdown ends */}
 
-             
-             
-              {user?.email? (
+             {/* Profile dropdown */}
+             <div className="inline">
+               <Button
+        id="demo-positioned-button2"
+        aria-controls={open2 ? 'demo-positioned-menu2' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open2 ? 'true' : undefined}
+        onClick={handleClick2}
+      >
+        <AccountCircleIcon></AccountCircleIcon>
+      </Button>
+      <Menu
+        id="demo-positioned-menu2"
+        aria-labelledby="demo-positioned-button2"
+        anchorEl={anchorEl2}
+        open={open2}
+        onClose={handleClose2}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <MenuItem onClick={handleClose2}>Profile</MenuItem>
+        <MenuItem onClick={handleClose2}>My account</MenuItem>
+       
+        {user?.email? (
                 <>
-                  <Button>
+                  <MenuItem>
                     <Link to="/dashboard">Dashboard</Link>
-                  </Button>
-                  <Button onClick={handleLogout}>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
                     Logout
-                  </Button>
-                  <Typography>{user?.displayName}</Typography>
+                  </MenuItem>
+                  
                 </>): (<>
                 <Button>
                 <Link to="/login">Login</Link>
               </Button>
                 </>
               )}
+      </Menu>
+             <div>
+     
+    </div>
+
+    {/* profile dropdown ends */}
+             </div>
+             
+             
             </Box>
             <Typography> </Typography>
           </Toolbar>
