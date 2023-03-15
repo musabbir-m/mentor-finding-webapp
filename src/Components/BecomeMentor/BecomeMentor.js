@@ -18,7 +18,7 @@ import { toast } from "react-hot-toast";
 
 const BecomeMentor = () => {
   const { createUser, updateUser } = useContext(AuthContext);
-  const [submitLoading, setSubmitLoading]= useState(false)
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const [signupError, setSignupError] = useState("");
   const {
@@ -27,11 +27,10 @@ const BecomeMentor = () => {
     formState: { errors },
   } = useForm();
 
-  
   //
 
   const handleSignup = (data) => {
-    setSubmitLoading(true)
+    setSubmitLoading(true);
     const imageBbKey = "e419d019481d8c92648b9beb567065df";
     const image = data.image[0];
     const formData = new FormData();
@@ -43,33 +42,52 @@ const BecomeMentor = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then(imgData=> {
-        if(imgData.success){
-            console.log(data);
-            setSignupError("");
-            createUser(data.email, data.password)
-              .then((result) => {
-                const user = result.user;
-                console.log(user);
-        
-                const userInfo = { displayName: data.name1+" "+data.name2 };
-                updateUser(userInfo)
-                  .then(() => {})
-                  .catch((err) => {});
-                toast('Registered successfully')
-                setSubmitLoading(false)
-        
-                saveUser(data.name1+" "+data.name2, data.email, data.category, data.bio, data.job, data.company,imgData.data.url);
-              })
-            .catch((err) =>{ setSignupError(err.message); setSubmitLoading(false)});
-        }
-      })
+      .then((imgData) => {
+        if (imgData.success) {
+          console.log(data);
+          setSignupError("");
+          createUser(data.email, data.password)
+            .then((result) => {
+              const user = result.user;
+              console.log(user);
 
-    
+              const userInfo = { displayName: data.name1 + " " + data.name2 };
+              updateUser(userInfo)
+                .then(() => {})
+                .catch((err) => {});
+              toast("Registered successfully");
+              setSubmitLoading(false);
+
+              saveUser(
+                data.name1 + " " + data.name2,
+                data.email,
+                data.category,
+                data.bio,
+                data.job,
+                data.company,
+                imgData.data.url
+              );
+            })
+            .catch((err) => {
+              setSignupError(err.message);
+              setSubmitLoading(false);
+            });
+        }
+      });
   };
   //saveuser to database
-  const saveUser = (name, email, category, bio, job, company, img) => {
-    const user = { name, email,category,bio,img, job,company, type: "mentor", approved: 'false' };
+  const saveUser = (name, email, category, bio, img, job, company) => {
+    const user = {
+      name,
+      email,
+      category,
+      bio,
+      job,
+      company,
+      img,
+      type: "mentor",
+      approved: "false",
+    };
     fetch("http://localhost:5000/user", {
       method: "POST",
       headers: {
@@ -92,10 +110,19 @@ const BecomeMentor = () => {
         be sure to have a look at those.
       </Alert>
       <form onSubmit={handleSubmit(handleSignup)}>
-           <div className="flex gap-4 mt-">
-           <div><p>Photo</p>
-            <Avatar></Avatar></div> <Input required className="" type='file' placeholder="upload photo" {...register('image', {required: "please add a photo"})}></Input>
-           </div>
+        <div className="flex gap-4 mt-">
+          <div>
+            <p>Photo</p>
+            <Avatar></Avatar>
+          </div>{" "}
+          <Input
+            required
+            className=""
+            type="file"
+            placeholder="upload photo"
+            {...register("image", { required: "please add a photo" })}
+          ></Input>
+        </div>
         <div className="mt-10 grid grid-cols-2 gap-6">
           <TextField
             {...register("name1", { required: "Please insert your name" })}
@@ -169,43 +196,50 @@ const BecomeMentor = () => {
             size="small"
             className=""
           ></TextField>
-          
         </div>
         <div>
           <div className="mt-3">
-            <h2 className="text-2xl text-center">Give Some more information </h2>
+            <h2 className="text-2xl text-center">
+              Give Some more information{" "}
+            </h2>
             <p>Category</p>
             <select
               className=" mb-3 h-10 w-2/4 border-2 rounded"
               placeholder="User type"
-              {...register("category", { required: "Please select a category" })}
+              {...register("category", {
+                required: "Please select a category",
+              })}
             >
               <option value="Web Development">Web Development</option>
               <option value="Programming">Programming</option>
               <option value="Ux and Design">UX and Design</option>
-              <option value="Product and Marketing">Product and Marketing</option>
+              <option value="Product and Marketing">
+                Product and Marketing
+              </option>
             </select>
           </div>
           <p className="">Bio</p>
           <TextField
-          {...register("bio", { required: "Please add a short bio" })}
-          id="outlined-multiline-static"
-         
-          placeholder="Add a bio"
-          multiline
-          rows={4}
-          
-          fullWidth
-        />
+            {...register("bio", { required: "Please add a short bio" })}
+            id="outlined-multiline-static"
+            placeholder="Add a bio"
+            multiline
+            rows={4}
+            fullWidth
+          />
         </div>
-        {
-            signupError && <Alert className="mt-3" severity="error">{signupError}</Alert>
-        }
+        {signupError && (
+          <Alert className="mt-3" severity="error">
+            {signupError}
+          </Alert>
+        )}
         <div className="flex justify-end">
-          <button type="submit" className="mt-8  px-2 w-24 h-10 py-2 bg-blue-500 text-white rounded">
-            {submitLoading?  "loading.." : "confirm"}  
+          <button
+            type="submit"
+            className="mt-8  px-2 w-24 h-10 py-2 bg-blue-500 text-white rounded"
+          >
+            {submitLoading ? "loading.." : "confirm"}
           </button>
-
         </div>
       </form>
     </div>

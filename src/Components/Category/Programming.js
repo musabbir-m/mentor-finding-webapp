@@ -23,9 +23,7 @@ const Programming = () => {
       }
     return (
         <div>
-           <div>
-               
-           </div>
+            <h2 className='text-5xl font-bold text-center mt-24 mb-16'>Top mentors for Programming</h2>
            <div>
 
            {programmingMentors.map(mentor=> 

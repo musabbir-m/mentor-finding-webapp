@@ -7,6 +7,7 @@ import { AuthContext } from "../Components/AuthProvider/AuthProvider";
 import { Button, ButtonGroup } from "@mui/material";
 import { IcecreamRounded } from "@mui/icons-material";
 import Navbar from "../Components/Shared/Navbar/Navbar";
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,7 @@ const DashboardLayout = () => {
       <Navbar></Navbar>
       <div className="grid grid-cols-5 lg:grid-cols-4 relative">
         <div className=" b border-2  border-gray-300 sticky-top-0">
+       <div className="bg-gray-200 py-2"> <RocketLaunchIcon></RocketLaunchIcon><p className="md:inline hidden font-semibold">Dashboard</p></div>
           {isMentee && (
             <>
               <Link to="/myrequest">My Requests</Link>
