@@ -84,7 +84,7 @@ const Login = () => {
                 {error && <Alert fullWidth severity="error">{error}</Alert>}
                 <Typography sx={{text:'center', ml:'1rem'}}>Don't have an account? <Link className='underline' to='/signup'>Signup</Link></Typography>
                 <Grid xs={12} item>
-                  <Button fullWidth variant="contained" type="submit">
+                  <Button className='bg-blue-500' fullWidth variant="contained" type="submit">
                    Login
                   </Button>
                 </Grid>

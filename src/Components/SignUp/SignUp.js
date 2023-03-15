@@ -109,7 +109,7 @@ const SignUp = () => {
               </Grid>
               {signupError && <Alert fullWidth severity="error">{signupError}</Alert>}
               <Grid xs={12} item>
-                <Button fullWidth variant="contained" type="submit">
+                <Button className="bg-blue-500" fullWidth variant="contained" type="submit">
                   Sign Up
                 </Button>
               </Grid>
