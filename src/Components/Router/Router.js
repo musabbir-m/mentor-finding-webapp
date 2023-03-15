@@ -9,6 +9,7 @@ import WebDevelopment from "../Category/WebDevelopment";
 import UxDesign from "../Category/UxDesign";
 import Programming from "../Category/Programming";
 import ProductMarketing from "../Category/ProductMarketing";
+import MentoringRequest from "../Mentoring/MentoringRequest/MentoringRequest";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
       },
+      {
+        path: '/dashboard/mentoringrequest',
+        element:<MentoringRequest></MentoringRequest>
+      }
     ],
   },
 ]);

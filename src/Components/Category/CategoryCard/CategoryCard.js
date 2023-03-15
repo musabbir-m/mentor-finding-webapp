@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import PhoneIcon from "@mui/icons-material/Phone";
 import TaskIcon from "@mui/icons-material/Task";
@@ -10,14 +10,17 @@ import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 const CategoryCard = ({ data }) => {
   const { user } = useContext(AuthContext);
+  const [disable, setDisable]=  useState(false)
   const handleApply = () => {
+    setDisable(true)
     const newApplication = {
       mentor: data.name,
       mentorEmail: data.email,
       category: data.category,
       mentorImg: data.img,
+      menteeEmail: user?.email
     };
-    fetch("https://boatfinder-server.vercel.app/product", {
+    fetch("http://localhost:5000/mentoring", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,6 +32,8 @@ const CategoryCard = ({ data }) => {
         console.log(data);
         toast("Success! Wait for approval from your mentor");
       });
+      
+
   };
 
   return (
@@ -65,7 +70,7 @@ const CategoryCard = ({ data }) => {
         <p >Unlimited chat, e-mail or text with mentor, within boundaries.</p>
         <p className="border-b-2 border-gray-200 pb-2"><ChatBubbleOutlineOutlinedIcon></ChatBubbleOutlineOutlinedIcon> <AlternateEmailOutlinedIcon></AlternateEmailOutlinedIcon> <MailOutlineOutlinedIcon></MailOutlineOutlinedIcon></p> 
         <p className="border-b-2 pb-2">Managing tasks to trak progress and projects</p>
-        <button className="mt-2 px-4 py-2 bg-blue-500 rounded text-white">
+        <button onClick={handleApply} disabled={disable === "true" ? true : false} className="mt-2 px-4 py-2 bg-blue-500 rounded text-white">
           Apply now
         </button>
       </div>

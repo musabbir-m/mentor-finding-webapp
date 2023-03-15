@@ -47,7 +47,7 @@ const DashboardLayout = () => {
               <ButtonGroup orientation="vertical">
                 <Button>
                   <IcecreamRounded></IcecreamRounded>{" "}
-                  <Link className="">Request</Link>
+                  <Link to='/dashboard/mentoringrequest' className="">Request</Link>
                 </Button>
                 <Button>
                   <Link>Posts</Link>
