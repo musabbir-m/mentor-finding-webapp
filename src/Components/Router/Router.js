@@ -11,6 +11,8 @@ import Programming from "../Category/Programming";
 import ProductMarketing from "../Category/ProductMarketing";
 import MentoringRequest from "../Mentoring/MentoringRequest/MentoringRequest";
 import MyRequest from "../MyRequest/MyRequest";
+import Chat from "../Chat/Chat";
+import Test from "../Test/Test";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/category/programming",
         element: <Programming></Programming>
+      },
+      {
+        path:"/chat",
+        element: <Chat></Chat>
+      },
+      {
+        path:"/test",
+        element: <Test></Test>
       }
 
     ],

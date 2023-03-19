@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import { CatchingPokemon } from "@mui/icons-material";
 import { Menu, MenuItem, Stack } from "@mui/material";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -37,7 +37,7 @@ export default function Navbar(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   // dropdown2
 
   const [anchorEl2, setAnchorEl2] = React.useState(null);
@@ -53,10 +53,9 @@ export default function Navbar(props) {
 
   // Logout
 
-  const handleLogout= ()=> {
-      logOut()
-      .then(data=>{})
-  }
+  const handleLogout = () => {
+    logOut().then((data) => {});
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -85,11 +84,9 @@ export default function Navbar(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-
       <AppBar
         component="nav"
-        sx={{ backgroundColor: "white",color:'black', boxShadow: "none" }}
+        sx={{ backgroundColor: "white", color: "black", boxShadow: "none" }}
       >
         <Container>
           <Toolbar>
@@ -108,14 +105,17 @@ export default function Navbar(props) {
               color="black"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-             <Link to='/'>Findmentor</Link>
-            </Typography> 
+              <Link to="/">Findmentor</Link>
+            </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {/* {navItems.map((item) => (
                 <Button key={item} sx={{ color: "white" }}>
                   {item}
                 </Button>
               ))} */}
+             <Button>
+             <Link to="/chat">Chat</Link>
+             </Button>
 
               {/* Bellow is the dropdown */}
               <div className="inline">
@@ -137,68 +137,74 @@ export default function Navbar(props) {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  <MenuItem onClick={handleClose}><Link to='/category/webdevelopment'>Web Development</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='/category/uxdesign'>UX and Design</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='/category/product&marketing'>Product and Marketing</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to='/category/programming'>Programming</Link></MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/category/webdevelopment">Web Development</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/category/uxdesign">UX and Design</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/category/product&marketing">
+                      Product and Marketing
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/category/programming">Programming</Link>
+                  </MenuItem>
                 </Menu>
               </div>
 
               {/* Dropdown ends */}
+              
 
-             {/* Profile dropdown */}
-             <div className="inline">
-               <Button
-        id="demo-positioned-button2"
-        aria-controls={open2 ? 'demo-positioned-menu2' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open2 ? 'true' : undefined}
-        onClick={handleClick2}
-      >
-        <AccountCircleIcon></AccountCircleIcon>
-      </Button>
-      <Menu
-        id="demo-positioned-menu2"
-        aria-labelledby="demo-positioned-button2"
-        anchorEl={anchorEl2}
-        open={open2}
-        onClose={handleClose2}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <MenuItem onClick={handleClose2}>Profile</MenuItem>
-        <MenuItem onClick={handleClose2}>My account</MenuItem>
-       
-        {user?.email? (
-                <>
-                  <MenuItem>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>
-                    Logout
-                  </MenuItem>
-                  
-                </>): (<>
-                <Button>
-                <Link to="/login">Login</Link>
-              </Button>
-                </>
-              )}
-      </Menu>
-             <div>
-     
-    </div>
+              {/* Profile dropdown */}
+              <div className="inline">
+                <Button
+                  id="demo-positioned-button2"
+                  aria-controls={open2 ? "demo-positioned-menu2" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open2 ? "true" : undefined}
+                  onClick={handleClick2}
+                >
+                  <AccountCircleIcon></AccountCircleIcon>
+                </Button>
+                <Menu
+                  id="demo-positioned-menu2"
+                  aria-labelledby="demo-positioned-button2"
+                  anchorEl={anchorEl2}
+                  open={open2}
+                  onClose={handleClose2}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                >
+                  <MenuItem onClick={handleClose2}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose2}>My account</MenuItem>
 
-    {/* profile dropdown ends */}
-             </div>
-             
-             
+                  {user?.email ? (
+                    <>
+                      <MenuItem>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </>
+                  ) : (
+                    <>
+                      <Button>
+                        <Link to="/login">Login</Link>
+                      </Button>
+                    </>
+                  )}
+                </Menu>
+                <div></div>
+
+                {/* profile dropdown ends */}
+              </div>
             </Box>
             <Typography> </Typography>
           </Toolbar>

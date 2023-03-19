@@ -88,7 +88,7 @@ const BecomeMentor = () => {
       type: "mentor",
       approved: "false",
     };
-    fetch("http://localhost:5000/user", {
+    fetch("https://server-findmentor.vercel.app/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -99,7 +99,9 @@ const BecomeMentor = () => {
   //
   return (
     <div className="mx-auto px-5 mt-16 mb-32  md:px-16">
-      <h2 className="text-center font-semibold text-4xl">Apply For Mentorship</h2>
+      <h2 className="text-center font-semibold text-4xl">
+        Apply For Mentorship
+      </h2>
 
       <Alert className="w- mx-auto mt-10 mb-16" severity="info">
         Filling out the form only takes a couple minutes. We'd love to learn

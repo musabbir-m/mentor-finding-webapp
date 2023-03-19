@@ -5,22 +5,22 @@ import TaskIcon from "@mui/icons-material/Task";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 const CategoryCard = ({ data }) => {
   const { user } = useContext(AuthContext);
-  const [disable, setDisable]=  useState(false)
+  const [disable, setDisable] = useState(false);
   const handleApply = () => {
-    setDisable(true)
+    setDisable(true);
     const newApplication = {
       mentor: data.name,
       mentorEmail: data.email,
       category: data.category,
       mentorImg: data.img,
-      menteeEmail: user?.email
+      menteeEmail: user?.email,
     };
-    fetch("http://localhost:5000/mentoring", {
+    fetch("https://server-findmentor.vercel.app/mentoring", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,8 +32,6 @@ const CategoryCard = ({ data }) => {
         console.log(data);
         toast("Success! Wait for approval from your mentor");
       });
-      
-
   };
 
   return (
@@ -67,10 +65,20 @@ const CategoryCard = ({ data }) => {
         <p className="pt-3 border-b-2 border-gray-200 mb-3 pb-2 text-blue-900 font-semibold ">
           What can I expect from this mentor?
         </p>
-        <p >Unlimited chat, e-mail or text with mentor, within boundaries.</p>
-        <p className="border-b-2 border-gray-200 pb-2"><ChatBubbleOutlineOutlinedIcon></ChatBubbleOutlineOutlinedIcon> <AlternateEmailOutlinedIcon></AlternateEmailOutlinedIcon> <MailOutlineOutlinedIcon></MailOutlineOutlinedIcon></p> 
-        <p className="border-b-2 pb-2">Managing tasks to trak progress and projects</p>
-        <button onClick={handleApply} disabled={disable === "true" ? true : false} className="mt-2 px-4 py-2 bg-blue-500 rounded text-white">
+        <p>Unlimited chat, e-mail or text with mentor, within boundaries.</p>
+        <p className="border-b-2 border-gray-200 pb-2">
+          <ChatBubbleOutlineOutlinedIcon></ChatBubbleOutlineOutlinedIcon>{" "}
+          <AlternateEmailOutlinedIcon></AlternateEmailOutlinedIcon>{" "}
+          <MailOutlineOutlinedIcon></MailOutlineOutlinedIcon>
+        </p>
+        <p className="border-b-2 pb-2">
+          Managing tasks to trak progress and projects
+        </p>
+        <button
+          onClick={handleApply}
+          disabled={disable === "true" ? true : false}
+          className="mt-2 px-4 py-2 bg-blue-500 rounded text-white"
+        >
           Apply now
         </button>
       </div>

@@ -24,10 +24,9 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();  
+  } = useForm();
 
   const handleSignup = (data) => {
-
     console.log(data);
     setSignupError("");
     createUser(data.email, data.password)
@@ -35,23 +34,20 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast("User Created Successfully");
-        <Alert severity="success">user Created successfully</Alert>
+        <Alert severity="success">user Created successfully</Alert>;
         const userInfo = { displayName: data.name };
         updateUser(userInfo)
           .then(() => {})
           .catch((err) => {});
 
         saveUser(data.name, data.email);
-
-       
       })
       .catch((err) => setSignupError(err.message));
-
   };
-//saveuser to database
+  //saveuser to database
   const saveUser = (name, email) => {
     const user = { name, email, type: "mentee" };
-    fetch("http://localhost:5000/user", {
+    fetch("https://server-findmentor.vercel.app/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -87,11 +83,13 @@ const SignUp = () => {
                   variant="outlined"
                   fullWidth
                   required
-                  {...register("email", { required: "Please insert your email" })}
+                  {...register("email", {
+                    required: "Please insert your email",
+                  })}
                 ></TextField>
-                 {errors.email && (
-                <Typography>{errors.email.message}</Typography>
-              )}
+                {errors.email && (
+                  <Typography>{errors.email.message}</Typography>
+                )}
               </Grid>
               <Grid xs={12} item>
                 <TextField
@@ -101,15 +99,26 @@ const SignUp = () => {
                   variant="outlined"
                   fullWidth
                   required
-                  {...register("password", { required: "Password is required" })}
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
                 ></TextField>
-                 {errors.password && (
-                <Typography>{errors.password.message}</Typography>
-              )}
+                {errors.password && (
+                  <Typography>{errors.password.message}</Typography>
+                )}
               </Grid>
-              {signupError && <Alert fullWidth severity="error">{signupError}</Alert>}
+              {signupError && (
+                <Alert fullWidth severity="error">
+                  {signupError}
+                </Alert>
+              )}
               <Grid xs={12} item>
-                <Button className="bg-blue-500" fullWidth variant="contained" type="submit">
+                <Button
+                  className="bg-blue-500"
+                  fullWidth
+                  variant="contained"
+                  type="submit"
+                >
                   Sign Up
                 </Button>
               </Grid>

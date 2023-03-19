@@ -10,12 +10,11 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <Container disableGutters maxWidth="">
-      
-      <RouterProvider router={router}> </RouterProvider>
+        <RouterProvider router={router}> </RouterProvider>
 
-      <CssBaseline />
-      <Toaster/>
-    </Container>
+        <CssBaseline />
+        <Toaster />
+      </Container>
     </StyledEngineProvider>
   );
 }

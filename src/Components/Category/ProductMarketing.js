@@ -3,7 +3,7 @@ import CategoryCard from "./CategoryCard/CategoryCard";
 import { useQuery } from "@tanstack/react-query";
 
 const ProductMarketing = () => {
-  const url = "http://localhost:5000/productmarketing";
+  const url = "https://server-findmentor.vercel.app/productmarketing";
   const {
     data: productMentors = [],
     isLoading,
