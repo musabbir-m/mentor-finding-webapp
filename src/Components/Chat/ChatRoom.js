@@ -2,21 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import "./ChatRoom.css";
-const ChatRoom = ({ socket, room }) => {
+const ChatRoom = ({ socket, room, }) => {
   const { user } = useContext(AuthContext);
+  console.log(user)
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
 
   const sendMessage = async () => {
-    if (room === "") {
-      alert("Please confirm the room");
-      return;
-    }
+    
     if (currentMessage !== "") {
       const messageData = {
         room: room,
-        author: user.displayName,
+        author: user?.displayName,
         message: currentMessage,
         time:
           new Date(Date.now()).getHours() +
@@ -32,11 +30,12 @@ const ChatRoom = ({ socket, room }) => {
 
   // recieve message
   useEffect(() => {
-    socket.on("my_message", (data) => {
+    socket.on("recieve_message", (data) => {
+      
+      console.log(data);
       setMessageList((list) => [...list, data]);
-      console.log(data, 'hiii');
     });
-  }, [socket]);
+  }, []);
 
   return (
     <div className="App">
